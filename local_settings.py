@@ -49,8 +49,9 @@ DEBUG = os.environ.get("GRAPHITE_DEBUG", "false").lower() in ['1','true','yes']
 # cached for longer periods of times. All times are in seconds. If the policy is
 # empty or undefined, all results will be cached for DEFAULT_CACHE_DURATION.
 DEFAULT_CACHE_DURATION = int(os.environ.get('GRAPHITE_DEFAULT_CACHE_DURATION', '0'))
-if (os.getenv("GRAPHITE_MEMCACHE_HOST") is not None):
-    MEMCACHE_HOSTS = os.getenv("GRAPHITE_MEMCACHE_HOST").split(",")
+if (os.environ.get("GRAPHITE_MEMCACHE_HOST") is not None):
+    MEMCACHE_HOSTS = os.environ.get("GRAPHITE_MEMCACHE_HOST").split(",")
+MEMCACHE_KEY_PREFIX = os.environ.get('GRAPHITE_MEMCACHE_KEY_PREFIX', 'graphite' )
  # Cache images and data for 1 minute
 #DEFAULT_CACHE_POLICY = [(0, 60), # default is 60 seconds
 #                        (7200, 120), # >= 2 hour queries are cached 2 minutes
